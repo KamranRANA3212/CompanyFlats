@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+	<SpaRoot>ClientApp\</SpaRoot>
+	<DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**;$(SpaRoot)dist\**;$(SpaRoot).angular\**</DefaultItemExcludes>
+	<TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+	<UseAppHost>false</UseAppHost>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.2.2" />
+		<PackageReference Include="Azure.Identity" Version="1.8.2" />
+		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.21.0" />
+		<PackageReference Include="Microsoft.Identity.Web" Version="1.25.5" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Remove="$(SpaRoot)**" />
+		<None Remove="$(SpaRoot)**" />
+		<None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**;$(SpaRoot)dist\**;$(SpaRoot).angular\**" />
+		<ProjectReference Include="..\Grosvenor.Portal.Business\Grosvenor.Portal.Business.csproj" />
+		<ProjectReference Include="..\Grosvenor.Portal.Data\Grosvenor.Portal.Data.csproj" />
+		<ProjectReference Include="..\Grosvenor.Portal.Model\Grosvenor.Portal.Model.csproj" />
+		<Content Update="Migrations\**" CopyToPublishDirectory="Never" />
+	</ItemGroup>
+
+</Project>

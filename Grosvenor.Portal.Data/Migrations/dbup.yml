@@ -1,0 +1,25 @@
+dbUp:
+  version: 1
+  provider: sqlserver
+  connectionString: $CONNSTR$
+  connectionTimeoutSec: 30
+  disableVars: yes
+  transaction: None
+  scripts:
+    -   folder: .
+        subFolders: yes
+        order: 100
+        runAlways: no
+        encoding: utf-8
+        filter: 
+        matchFullPath: no 
+  naming:
+    useOnlyFileName: no
+    includeBaseFolderName: no
+    prefix:
+  vars:
+    # Var1: Value1
+    # Var2: Value2
+  journalTo:
+    schema: "dbo"
+    table: "_Mirgations"
