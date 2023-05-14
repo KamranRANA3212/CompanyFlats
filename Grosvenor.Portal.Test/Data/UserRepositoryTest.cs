@@ -9,17 +9,17 @@ using Xunit;
 
 namespace Grosvenor.Portal.Test.Data
 {
-    public class UserAccountRepositoryTest : RepositoryBase
+    public class UserRepositoryTest : RepositoryBase
     {
         [Fact]
         public async Task CreateAsync()
         {
             //Arrange
             using var context = CreateContext();
-            var repoistory = new UserAccountRepository(context);
-            var user = new UserAccount
+            var repoistory = new UserRepository(context);
+            var user = new User
             {
-                UserAccountId = Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 Email = "dev.team@stallions.tech",
                 Name = "Dev Team"
             };
@@ -29,30 +29,36 @@ namespace Grosvenor.Portal.Test.Data
 
             //Assert
             using var testContext = CreateContext();
-            Assert.True(testContext.UserAccounts.Any());
+            Assert.True(testContext.Users.Any());
 
         }
 
         [Fact]
-        public async Task GetAsync()
+        public async Task GetByIdAsync()
         {
             //Arrange
             using var context = CreateContext();
-            var repoistory = new UserAccountRepository(context);
-            Guid id = Guid.NewGuid();
-            var user = new UserAccount
+            var repoistory = new UserRepository(context);
+            var id = Guid.NewGuid();
+            var model = new User
             {
-                UserAccountId = id,
+                Id = id,
                 Email = "dev.team@stallions.tech",
-                Name = "Dev Team"
+                Name = "Dev Team",
+                CreatedById = id,
+                CreatedDate = DateTime.UtcNow,
+                UpdatedById = id,
+                UpdatedDate = DateTime.UtcNow,
             };
 
+            await repoistory.GetOrCreateAsync(model);
+
             //Act
-            await repoistory.GetOrCreateAsync(user);
+            var user = await repoistory.GetByIdAsync(id);
 
             //Assert
-            using var testContext = CreateContext();
-            Assert.True(testContext.UserAccounts.Any());
+            Assert.NotNull(user);
+            Assert.Equal(id, user.Id);  
         }
     }
 }

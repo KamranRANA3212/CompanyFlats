@@ -1,0 +1,370 @@
+// https://github.com/NG-ZORRO/ng-zorro-antd/blob/master/components/style/themes/default.less
+@import "../../node_modules/ng-zorro-antd/ng-zorro-antd.less";
+@import "./bs-utils.less";
+
+@font-family: "Amplitude-Regular";
+//@font-family: "LibreFranklin-Regular";
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Grosvenor-Headline";
+}
+
+@primary-color: #0d776e;
+@success-color: #0d776e;
+@error-color: #e7472c;
+@info-color: #008ad8;
+@warning-color: #fbba00;
+@dark-color: #404040;
+
+@layout-header-background: #404040;
+@layout-trigger-background: #404040;
+
+@modal-body-padding: @padding-sm;
+@modal-header-bg: @primary-color;
+@modal-heading-color: @white;
+@modal-header-padding: @padding-sm;
+
+@table-header-bg: @primary-color;
+@table-header-color: @white;
+@table-header-sort-active-bg: darken(@primary-color, 5%);
+
+.ant-table-column-sorter i.active {
+  color: @white;
+}
+
+@select-item-selected-bg: @primary-color;
+@select-item-selected-color: @white;
+@border-radius-base: 3px;
+
+td nz-select {
+  width: 100%;
+}
+
+
+@card-head-color: @white;
+@card-head-background : @primary-color;
+@menu-item-active-bg: @primary-color;
+@menu-item-active-bg: @primary-3;
+@layout-header-height: 53px;
+@menu-dark-inline-submenu-bg: none;
+@drawer-header-padding: @padding-sm;
+
+.ant-menu-item-selected,
+.ant-menu-item-selected:hover {
+  color: @white;
+}
+
+.ant-menu-submenu-open,
+.ant-menu-submenu-active {
+  color: @white  !important;
+}
+
+.ant-tabs-tab-active {
+  background-color: @primary-color  !important;
+  padding: 10px;
+
+  a {
+    color: @white;
+  }
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: @white;
+}
+
+.ant-drawer-body {
+  padding: @padding-sm;
+}
+
+.ant-drawer-header {
+  background: @primary-color;
+  color: @white;
+  border-radius: 0px;
+}
+
+.ant-drawer-close {
+  color: #fff;
+}
+
+.ant-drawer-close:hover {
+  color: #fff;
+}
+
+.ant-drawer-title {
+  color: @white;
+}
+
+.ant-layout-sider-collapsed {
+  flex: 0 0 60 !important;
+  min-width: 60px !important;
+  max-width: 60px !important;
+  width: 60px !important;
+}
+
+.ant-dropdown-menu-item-disabled {
+  color: rgba(0, 0, 0, 0.7);
+  cursor: default !important;
+}
+
+.ant-dropdown-menu-item-disabled:hover {
+  color: rgba(0, 0, 0, 0.7);
+  cursor: default !important;
+}
+
+.ant-menu .ant-menu-item {
+  height: 32px !important;
+  line-height: 32px !important;
+}
+
+.ant-menu-submenu-selected {
+  font-weight: 500;
+}
+
+.app-layout {
+  height: 100vh;
+}
+
+//SideBar Menu Styles
+.sider-submenu-padding {
+  padding-right: 18px;
+}
+
+.menu-list {
+  height: calc(100vh - 60px);
+  min-height: calc(100vh - 60px);
+  overflow-y: auto;
+}
+
+.menu-sidebar {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  box-shadow: 2px 0 6px rgba(0, 21, 41, .35);
+}
+
+.sidebar-logo {
+  position: relative;
+  height: 53px;
+  overflow: hidden;
+  line-height: 64px;
+  transition: all .3s;
+}
+
+.ant-menu-inline-collapsed>.ant-menu-submenu-selected {
+  background-color: @primary-color  !important;
+  color: #fff !important;
+}
+
+#sideBarUpperMenu>.ant-dropdown-menu-item-divider {
+  background-color: #fff3;
+}
+
+#sideBarMainMenu {
+  padding-top: 8px;
+}
+
+#sideBarUpperMenu>.ant-menu-item-selected {
+  background-color: transparent !important;
+
+}
+
+#sideBarMainMenu .ant-menu-submenu>.ant-menu-submenu-title {
+  height: 32px !important;
+  line-height: 16px !important;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+//
+//Header Styles
+.header-user {
+  padding: 0px 12px 0px 0px;
+}
+
+.header-trigger {
+  height: 53px;
+  padding: 20px 24px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all .3s, padding 0s;
+}
+
+.trigger:hover {
+  color: @primary-color;
+}
+
+.app-header {
+  position: relative;
+  height: 53px;
+  padding: 0;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
+}
+
+//
+.sider-title {
+  font-size: 14px;
+  color: #fff;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.ant-avatar>img {
+  width: auto;
+  height: auto;
+}
+
+.ant-btn:focus {
+  border-color: @primary-color;
+  border-right-width: 1px !important;
+  outline: 0;
+  box-shadow: 0 0 0 3px #0372242a;
+}
+
+.inner-content-full-width {
+  margin: 20px 20px;
+  width: auto;
+  padding: @padding-sm;
+  background-color: #fff;
+  height: calc(100vh - 95px);
+}
+
+.inner-content-custom-width {
+  margin: 20px auto;
+  max-width: 1280px;
+  padding: @padding-sm;
+  background-color: #fff;
+  height: calc(100vh - 95px);
+}
+.inner-content{
+  overflow-y: scroll;
+  padding: 10px;
+  background-color:white;
+  height: calc(100vh - 120px);
+}
+nz-content {
+  overflow-y: auto;
+}
+
+//scroll bar styling
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+.ant-menu-dark::-webkit-scrollbar-thumb {
+  background-color: #8c8c8c;
+  border-color: @dark-color;
+}
+
+* ::-webkit-scrollbar-thumb {
+  background-color: #bfbfbf;
+  border-radius: 8px;
+  border: 2px solid #f0f2f5;
+}
+
+.dropDownItem {
+  font-weight: 500;
+}
+
+nz-header {
+  padding: 0 !important;
+  width: 100%;
+  z-index: 2;
+}
+
+//ag-grid styles start
+.grid-container {
+  height: calc(100vh - 122px);
+  min-height: 200px;
+  width: 100%;
+}
+
+.grid-container-2 {
+  height: calc(100vh - 152px);
+  min-height: 200px;
+  width: 100%;
+}
+
+// ag-grid styles end
+.ant-btn {
+  text-transform: uppercase;
+}
+
+.ant-divider-horizontal {
+  margin: 10px 0px !important;
+
+}
+
+nz-select {
+  width: 100%;
+}
+
+.drawer-body {
+  position: relative;
+  height: calc(100vh - 71px);
+}
+
+.drawer-content {
+  height: calc(100vh - 116px);
+  overflow-y: auto;
+}
+
+.dwr-footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  border-top: 1px solid rgb(232, 232, 232);
+  padding: 10px 15px 0px 15px;
+  text-align: right;
+  left: 0px;
+  background: #fff;
+}
+
+.ant-form-item {
+  margin-bottom: 15px;
+}
+
+[nz-form] {
+  width: 100%;
+  margin: 0px !important;
+}
+
+.ant-input-number-handler-wrap {
+  display: none;
+}
+
+nz-date-picker {
+  width: 100%;
+}
+
+nz-input-number {
+  width: 100%;
+}
+
+nz-date-picker {
+  width: 100%
+}
+
+li>a {
+  padding-left: 10px !important;
+}
+
+account-input {
+  width: 50%
+}
+
+
+
+ag-grid-angular {
+  min-height: 50px;
+}
+.fontSizeSmall{
+  font-size: 12px;
+}

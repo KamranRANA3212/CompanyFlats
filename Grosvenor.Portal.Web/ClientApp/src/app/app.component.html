@@ -1,15 +1,97 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-    <h1>
-        Welcome to {{title}}!
-    </h1>
-    <span style="display: block">{{ title }} app is running!</span>
-</div>
-<div>
-    <h2>API Respose:</h2>
-    <ul>
-        <li *ngFor="let i of values">
-            {{i}}
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar" nzCollapsible nzWidth="220px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null">
+    <div class="sidebar-logo">
+      <ul id="sideBarUpperMenu" nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+        <li nz-menu-item [ngClass]="{'sider-submenu-padding':isCollapsed}" style="padding:0px !important; height: 40px !important; padding-left:5px !important;">
+          <span class="sider-title">
+            <a routerLink="" [title]="title">
+              <span *ngIf="!isCollapsed"><img style="margin-left: 21px" src="assets/images/logo_white.png" /></span>
+              <span *ngIf="isCollapsed"><img style="height: 46px; padding-left: 8px;" src="assets/images/logo_sm_white.png" /></span>
+            </a>
+          </span>
         </li>
+        <li nz-menu-divider> </li>
+      </ul>
+    </div>
+    <ul id="sideBarMainMenu" class="menu-list" nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li nz-submenu nzTitle="Booking" nzIcon="book">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <i nz-icon nzType="table" nzTheme="outline"></i> <a routerLink="account-access/authorization-code">Authorization Code</a>
+          </li>
+        </ul>
+      </li>
+
+      <li nz-submenu nzTitle="Administration" nzIcon="book">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <i nz-icon nzType="table" nzTheme="outline"></i> <a routerLink="administration/planned-maintenance">Planned
+              Maintenance</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <i nz-icon nzType="table" nzTheme="outline"></i> <a routerLink="administration/messages">
+              Messages</a>
+          </li>
+        </ul>
+      </li>
+
     </ul>
-</div>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div nz-row class="app-header">
+        <div nz-col nzSpan="8">
+          <span style="padding-left:10px;" (click)="onCollapseClick()">
+            <button nz-button nzType="text"><i class="trigger" nz-icon
+                [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i></button>
+          </span>
+         
+          <nz-breadcrumb style="display:inline-block; margin-left:10px">
+            <nz-breadcrumb-item *ngFor="let x of breadcrumb">
+              <a [routerLink]="[x.url]">{{x.label}}</a>
+            </nz-breadcrumb-item>
+          </nz-breadcrumb>
+        </div>
+        <div nz-col nzSpan="8" class="text-center">
+          <h2>Company Flats</h2>
+        </div>
+        <div nz-col nzSpan="8">
+          <div nz-row nzJustify="end">
+            <span class="header-user">
+              <nz-input-group [nzSuffixIcon]="'search'" [nzSize]="'small'" style="width: 250px;">
+                <input class="text-left" type="text" (ngModelChange)="onSearchChange($event)" nz-input
+                  [placeholder]="'search'" autocomplete="off" [(ngModel)]="filter" />
+              </nz-input-group>
+            </span>
+           
+            
+            <span class="header-user">
+              <button nz-dropdown [nzDropdownMenu]="menuUser" nzPlacement="bottomRight" nzTrigger="click" nz-button
+                nzType="text"><i nz-icon nzType="user"></i></button>
+            </span>
+            <nz-dropdown-menu #menuUser="nzDropdownMenu">
+              <ul nz-menu>
+                <li nz-menu-item>{{identity.name}}</li>
+              </ul>
+            </nz-dropdown-menu>
+          </div>
+        </div>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div *ngIf="isLoading" style="left:56% !important;" class="ant-spin ant-spin-spinning ant-spin-lg spinner">
+        <span class="ant-spin-dot ant-spin-dot-spin ng-star-inserted">
+          <i class="ant-spin-dot-item"></i>
+          <i class="ant-spin-dot-item"></i>
+          <i class="ant-spin-dot-item"></i>
+          <i class="ant-spin-dot-item"></i>
+        </span>
+      </div>
+      <div *ngIf="!isLoading" class="inner-content-full-width">
+        <router-outlet>
+        </router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

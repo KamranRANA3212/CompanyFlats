@@ -11,7 +11,7 @@ namespace Grosvenor.Portal.Data.Context
 {
     public class PortalContext : DbContext
     {
-        public DbSet<UserAccount> UserAccounts { get; set; }
+        public DbSet<User> Users { get; set; }
         #region Infrastructure
         public PortalContext(DbContextOptions<PortalContext> options) : base(options) { }
         protected override void OnModelCreating(ModelBuilder modelBuilder) { modelBuilder.ApplyConfigurationsFromAssembly(typeof(PortalContext).Assembly); }
