@@ -1,4 +1,4 @@
-﻿using Grosvenor.Portal.Portal.Controllers;
+﻿using Grosvenor.Portal.Web.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;

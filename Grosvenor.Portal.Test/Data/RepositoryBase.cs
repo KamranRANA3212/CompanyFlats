@@ -13,7 +13,7 @@ namespace Grosvenor.Portal.Test.Data
         protected static PortalContext CreateContext()
         {
             var options = new DbContextOptionsBuilder<PortalContext>()
-                .UseInMemoryDatabase(databaseName: "GP")
+                .UseInMemoryDatabase(databaseName: "InMemory")
                 .Options;
 
             return new PortalContext(options);

@@ -1,0 +1,20 @@
+@font-face {
+    font-family: "Amplitude-Regular";
+    src: url("fonts/amplitude-regular-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+  
+@font-face {
+  font-family: "Grosvenor-Headline";
+  src: url("fonts/grosvenor-headline.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "LibreFranklin-Regular";
+  src: url("fonts/libre-franklin-v3-latin-regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}

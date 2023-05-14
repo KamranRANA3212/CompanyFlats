@@ -1,0 +1,75 @@
+@import"../../node_modules/ag-grid-community/src/styles/ag-grid.scss";
+//@import "~ag-grid-community/dist/styles/ag-theme-balham/sass/ag-theme-balham.scss";
+@import "../../node_modules/ag-grid-community/src/styles/ag-theme-balham/sass/ag-theme-balham-mixin.scss";
+// https://github.com/ag-grid/ag-grid-customise-theme/blob/master/src/vanilla-css-variables/styles/styles.scss
+// https://github.com/ag-grid/ag-grid-customise-theme/blob/master/src/angular/src/styles.scss
+// https://www.ag-grid.com/angular-data-grid/themes-customising/
+.layout {
+    min-height: 100vh;
+  }
+
+  .spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+  }
+
+  // .logo {
+  //   width: 140px;
+  //   height: 31px;
+  //   background: url('/assets/images/logo_white.png');
+  //   margin: 16px 24px 16px 0;
+  //   float: left;
+  // }
+
+
+
+  .welcome-container {
+    position: relative;
+    text-align: center;
+    top: calc(50% - 150px);
+    .welcome-card {
+      position: absolute;
+      top: calc(50% - 93px);
+      left: calc(50% - 250px);
+      right: 50%;
+      margin: 0 auto;
+      h1 {
+        position: relative;
+        text-align: center;
+      }
+    }
+  }
+
+  .ag-theme-custom-angular {
+    @include ag-theme-balham((
+      // foreground-color:#fff,
+      // data-color:#000,
+      row-hover-color: #0d776e4b,
+      checkbox-checked-color: #0d776e,
+      header-background-color: #0d776e,
+      header-foreground-color:#fff,
+      range-selection-border-color: transparent,
+      range-selection-background-color: transparent,
+      selected-row-background-color:#0d776e28,
+      font-family: ("Amplitude-Regular", sans-serif),
+    ));  
+  }
+
+  .ag-header .ag-icon-menu {
+    color: rgba(255, 255, 255, 0.54);
+  }
+  
+  .ag-header .ag-filter-icon {
+    color: rgba(255, 255, 255, 0.54);
+  }
+  
+  .ag-header .ag-sort-ascending-icon {
+    color: rgba(255, 255, 255, 0.54);
+  }
+
+  .ag-header .ag-sort-descending-icon {
+    color: rgba(255, 255, 255, 0.54);
+  }
