@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using System.Linq;
 using Grosvenor.Portal.Model.Config;
+using Microsoft.OpenApi.Models;
 
 namespace Grosvenor.Portal.Web
 {
@@ -104,6 +105,17 @@ namespace Grosvenor.Portal.Web
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IUserManager, UserManager>();
 
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen(config =>
+            {
+                config.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Compnay Flats Api",
+                    Description = "Compnay Flats Api"
+                });
+            });
+
             var app = builder.Build();
             if (environment.IsDevelopment())
             {
@@ -114,6 +126,17 @@ namespace Grosvenor.Portal.Web
             {
                 OnPrepareResponse = ctx => ctx.Context.SetCacheControl()
             });
+
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI(config =>
+                {
+                    config.SwaggerEndpoint("v1/swagger.json","v1");
+                    config.DocumentTitle = "Api Documentation";
+                    config.RoutePrefix = "swagger";
+                });
+            }
             app.UseAuthentication();
             app.UseAuthorization();
             app.MapControllers().RequireAuthorization();
