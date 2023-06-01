@@ -1,0 +1,5 @@
+﻿
+ALTER TABLE Booking
+ADD CONSTRAINT FK_Status
+FOREIGN KEY (Status) REFERENCES LookUp(Id);
+

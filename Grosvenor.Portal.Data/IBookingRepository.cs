@@ -9,6 +9,10 @@ namespace Grosvenor.Portal.Data
 {
     public interface IBookingRepository
     {
-        Task<Booking> CreateBookingAsync(Booking booking);
+        Task<BookingRequest> CreateBookingRequestAsync(BookingRequest booking);
+        Task<List<Booking>> GetApprovedBookingsAsync();
+        Task<List<BookingRequest>> GetPendingBookingsAsync();
+        Task<List<BookingRequest>> GetRejectedBookingsAsync();
+        Task<Booking> ApproveBookingAsync(Booking booking);
     }
 }

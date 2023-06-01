@@ -1,18 +1,23 @@
-﻿CREATE TABLE [dbo].[Booking]
+﻿CREATE TABLE [dbo].[BookingRequest]
 (
 	[Id] UNIQUEIDENTIFIER NOT NULL,
 	[Title] VARCHAR (150) NOT NULL,
 	[StartDate] DATETIME NOT NULL,
 	[EndDate] DATETIME NOT NULL,
 	[BookingType] UNIQUEIDENTIFIER NOT NULL,
-	[ConstCetenter] UNIQUEIDENTIFIER NOT NULL,
+	[CostCenter] VARCHAR (250) NOT NULL,
 	[BookingNotes] VARCHAR (250) NOT NULL,
 	[Status] UNIQUEIDENTIFIER NOT NULL,
 	[Amount] Decimal NOT NULL,
+	[NumberOfFlats] int NOT NULL,
     [CreatedBy] UNIQUEIDENTIFIER  NOT NULL,
 	[UpdatedBy] UNIQUEIDENTIFIER NOT NULL,
 	[CreatedDate] DATETIME NOT NULL,
 	[UpdatedDate] DATETIME NOT NULL,
-	PRIMARY KEY (Id)
+	
 )
+GO
+
+ALTER TABLE [dbo].[BookingRequest] ADD CONSTRAINT [PK_Booking_Request] PRIMARY KEY CLUSTERED  ([Id])
+
 GO

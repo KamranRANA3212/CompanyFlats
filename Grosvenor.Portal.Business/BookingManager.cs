@@ -15,12 +15,54 @@ namespace Grosvenor.Portal.Business
         {
             this.bookingRepository = bookingRepository;
         }
-
-        public Task<Booking> CreateBookingAsync(Booking booking)
+       
+        public async Task<Booking> CreateApproveRequestAsync(Booking booking)
         {
-            booking.StartDate = new DateTime(2023,1,1,15,0,0);
-            booking.EndDate = new DateTime(2023, 1, 1, 10, 0, 0); 
-            throw new NotImplementedException();
+            booking.Id = Guid.NewGuid();
+            booking.BookingRequestId= booking.Id;
+            booking.Status = booking.Status;
+            booking.FlatId= booking.FlatId;
+            booking.CreatedAt= DateTime.Now;
+            booking.UpdatedAt= DateTime.Now;
+            return await bookingRepository.ApproveBookingAsync(booking);
         }
+        public async Task<BookingRequest> CreateBookingRequestAsync(BookingRequest booking)
+        {
+            booking.Id = Guid.NewGuid();
+            booking.CreatedAt = DateTime.Now;
+            booking.UpdatedAt = DateTime.Now;
+            booking.StartDate = booking.StartDate.Date.AddHours(15);
+            booking.EndDate = booking.EndDate.Date.AddHours(10);
+            booking.Status =Guid.Parse("28B63C39-AAFA-4EF3-BD44-2D56BB0F8DE5");
+            TimeSpan duration = booking.EndDate - booking.StartDate;
+            int countdays = (int)Math.Ceiling(duration.TotalDays);
+            int weekendsCount = 0;
+            for (DateTime date = booking.StartDate; date < booking.EndDate; date = date.AddDays(1))
+            {
+                if ((date.DayOfWeek == DayOfWeek.Saturday && (date.AddDays(1)).DayOfWeek == DayOfWeek.Sunday) ||
+                    (date.DayOfWeek == DayOfWeek.Sunday && (date.AddDays(1)).DayOfWeek == DayOfWeek.Saturday))
+                {
+                    weekendsCount++;
+                }
+            }
+            int days = countdays - weekendsCount;
+            booking.Amount = days * 60;
+            return await bookingRepository.CreateBookingRequestAsync(booking);
+        }
+        public async Task<List<Booking>> GetApprovedBookingsAsync()
+        {
+            return await bookingRepository.GetApprovedBookingsAsync();
+        }
+        public async Task<List<BookingRequest>> GetPendingBookingsAsync()
+        {
+            return await bookingRepository.GetRejectedBookingsAsync();
+        }
+        public async Task<List<BookingRequest>> GetRejectedBookingsAsync()
+        {
+            return await bookingRepository.GetRejectedBookingsAsync();
+        }
+
+      
     }
 }
+    

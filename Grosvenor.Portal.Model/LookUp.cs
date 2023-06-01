@@ -11,6 +11,6 @@ namespace Grosvenor.Portal.Model
     {
         public Guid Id { get; set; }
         public string Category { get; set; }
-        public string Value { get; set; }
+        public string Name { get; set; }
     }
 }

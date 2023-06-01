@@ -13,6 +13,8 @@ namespace Grosvenor.Portal.Data.Context
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Booking> Bookings { get; set; }
+        public DbSet<LookUp> LookUps { get; set; }
+        public DbSet<BookingRequest> BookingRequests { get; set; }
         #region Infrastructure
         public PortalContext(DbContextOptions<PortalContext> options) : base(options) { }
         protected override void OnModelCreating(ModelBuilder modelBuilder) { modelBuilder.ApplyConfigurationsFromAssembly(typeof(PortalContext).Assembly); }

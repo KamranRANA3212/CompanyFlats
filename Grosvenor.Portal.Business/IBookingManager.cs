@@ -9,6 +9,10 @@ namespace Grosvenor.Portal.Business
 {
     public interface IBookingManager
     {
-        Task<Booking> CreateBookingAsync(Booking booking);
-    }
+        Task<BookingRequest> CreateBookingRequestAsync(BookingRequest booking);
+        Task<List<Booking>> GetApprovedBookingsAsync();
+        Task<List<BookingRequest>> GetPendingBookingsAsync();
+        Task<List<BookingRequest>> GetRejectedBookingsAsync();
+        Task<Booking> CreateApproveRequestAsync(Booking booking);
+    } 
 }

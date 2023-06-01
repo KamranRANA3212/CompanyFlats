@@ -29,6 +29,7 @@ namespace Grosvenor.Portal.Web
 
             builder.Services.Configure<EmailConfig>(builder.Configuration.GetSection(nameof(EmailConfig)));
             builder.Services.AddSingleton<IEmailManager, EmailManager>();
+            builder.Services.AddScoped<IBookingManager, BookingManager>();
 
             System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
             builder.Services
@@ -100,9 +101,10 @@ namespace Grosvenor.Portal.Web
             {
                 opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
                 opt.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
-            });            
-
+            });
+            builder.Services.AddHttpContextAccessor();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IBookingRepository, BookingRepository>();
             builder.Services.AddScoped<IUserManager, UserManager>();
 
             builder.Services.AddEndpointsApiExplorer();

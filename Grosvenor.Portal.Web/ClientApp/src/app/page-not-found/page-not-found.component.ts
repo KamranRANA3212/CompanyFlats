@@ -12,7 +12,6 @@ export class PageNotFoundComponent implements OnInit {
   constructor(private title:Title) {
     //this.title.setTitle('Page not found');
    }
-
   ngOnInit() {
     
   }
